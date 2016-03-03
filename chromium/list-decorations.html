@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+.red {
+  color: red;
+}
+</style>
+</head>
+<body>
+<ul id="list">
+</ul>
+<script>
+var list = document.getElementById('list');
+var templateItem = document.createElement('li');
+templateItem.className = '';
+templateItem.textContent = 'test item example';
+var redItem;
+function grow() {
+  while (list.clientHeight < window.innerHeight * 10) {
+    list.appendChild(templateItem.cloneNode(true));
+  }
+}
+grow();
+window.addEventListener('resize', grow);
+function setRed(e) {
+  if (redItem) {
+    redItem.classList.remove('red');
+  }
+  redItem = list.children[Math.floor(Math.random()*list.children.length/10)];
+  redItem.classList.add('red');
+  if (e) {
+    e.preventDefault();
+  }
+}
+window.addEventListener('keydown', setRed);
+</script>
+</body>
+</html>
