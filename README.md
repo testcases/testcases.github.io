@@ -1,5 +1,3 @@
 # testcases.github.io
 
-Test cases in this repository:
-
-- https://testcases.github.io/chromium/list-decorations.html for http://crbug.com/591851
+This is a repository of test case pages for web browser issues.
