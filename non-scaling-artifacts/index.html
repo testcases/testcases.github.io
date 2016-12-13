@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Artifacts in SVG animation</title>
+<style>
+svg {
+  display: block;
+  height: 256px;
+  width: 256px;
+}
+
+svg path {
+  stroke: black;
+  stroke-width: 1px;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+</style>
+</head>
+<body>
+  <h2>Actual behavior</h2>
+  <svg id="expected" preserveAspectRatio="none" viewBox="0 0 2 5">
+    <path d="M 1,0 L1,5" />
+    <animate attributeName="viewBox" from="0 0 5 5" to="0 0 2 5" dur="5s" begin="0s" fill="freeze"/>
+  </svg>
+  <h2>Desired behavior</h2>
+  <svg id="expected" preserveAspectRatio="none" viewBox="0 0 2 5">
+    <path d="M 1,0 L1,5" >
+        <animate attributeName="d" from="M 0.4,0 L0.4,5" to="M 1,0 L1,5" dur="5s" begin="0s" fill="freeze"
+		calcMode="spline" keyTimes="0;1" keySplines="0.4 0 1 .9"/>
+    </path>
+  </svg>
+</body>
+</html>
